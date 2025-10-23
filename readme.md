@@ -28,47 +28,42 @@ Supervisor responses are stored in **AWS DynamoDB (Local)**, enabling the AI to 
 
 ##  Installation and Setup
 
-### 1️⃣ Clone the Repository
-
+# 1️⃣ Clone the Repository
 git clone https://github.com/your-username/AI-human-loop.git
 cd AI-human-loop
 
 
-### 2️⃣ Set Up Virtual Environment
+# 2️⃣ Set Up Virtual Environment
+bash
 python -m venv venv
 venv\Scripts\activate      # On Windows
 # or
 source venv/bin/activate   # On macOS/Linux
 
 
-### 3️⃣ Install Dependencies
-
+# 3️⃣ Install Dependencies
 pip install -r requirements.txt
 
 
-### 4️⃣ Run DynamoDB Local
-
+# 4️⃣ Run DynamoDB Local
 docker pull amazon/dynamodb-local
 docker run -d -p 8000:8000 --name dynamodb_local amazon/dynamodb-local
 docker ps   # verify container is running
 
 
-### 5️⃣ AWS CLI Configuration (Local)
-
+# 5️⃣ AWS CLI Configuration (Local)
 aws configure
 Use dummy credentials (local DynamoDB doesn’t require real AWS credentials):
 
 
-### 6️⃣ Setup DynamoDB Tables
-
+# 6️⃣ Setup DynamoDB Tables
 python dynamo_setup.py
 aws dynamodb list-tables --endpoint-url http://localhost:8000
 
 
 Expected output:
-
 { "TableNames": ["HelpRequests", "KnowledgeBase"] }
 
-▶️ Running the Flask App
-
+# ▶️ Running the Flask App
 python app.py
+
