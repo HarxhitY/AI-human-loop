@@ -30,7 +30,6 @@ Supervisor responses are stored in **AWS DynamoDB (Local)**, enabling the AI to 
 
 ### 1️⃣ Clone the Repository
 
-```bash
 git clone https://github.com/your-username/AI-human-loop.git
 cd AI-human-loop
 
@@ -71,4 +70,5 @@ Expected output:
 { "TableNames": ["HelpRequests", "KnowledgeBase"] }
 
 ▶️ Running the Flask App
+
 python app.py
