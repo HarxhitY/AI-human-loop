@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Supervisor Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background: #f0f0f0; }
+        a.button { padding: 5px 10px; background: #4CAF50; color: white; text-decoration: none; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>Supervisor Dashboard</h1>
+    <a href="/learned">View Learned Answers</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Request ID</th>
+                <th>Question</th>
+                <th>Status</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for req in requests %}
+            <tr>
+                <td>{{ req.request_id }}</td>
+                <td>{{ req.question }}</td>
+                <td>{{ req.status }}</td>
+                <td>{{ req.created_at }}</td>
+                <td>
+                    <a class="button" href="/request/{{ req.request_id }}">View / Resolve</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Request Detail</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        textarea { width: 100%; height: 80px; margin-top: 5px; }
+        input[type=submit] { margin-top: 10px; padding: 5px 15px; }
+    </style>
+</head>
+<body>
+    <h1>Request Detail</h1>
+    <p><strong>Request ID:</strong> {{ req.request_id }}</p>
+    <p><strong>Question:</strong> {{ req.question }}</p>
+    <p><strong>Status:</strong> {{ req.status }}</p>
+    <p><strong>Created At:</strong> {{ req.created_at }}</p>
+    <p><strong>Caller:</strong> {{ req.caller }}</p>
+
+    <form method="POST" action="/request/{{ req.request_id }}/resolve">
+        <label for="answer">Supervisor Answer:</label>
+        <textarea name="answer" id="answer">{{ req.supervisor_answer or "" }}</textarea>
+        <label for="resolved">Mark as Resolved:</label>
+        <select name="resolved" id="resolved">
+            <option value="true" {% if req.status == 'Resolved' %}selected{% endif %}>Yes</option>
+            <option value="false" {% if req.status != 'Resolved' %}selected{% endif %}>No</option>
+        </select>
+        <br>
+        <input type="submit" value="Update Request">
+    </form>
+    <br>
+    <a href="/supervisor">Back to Supervisor Dashboard</a>
+</body>
+</html>
